@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="bg-[#F8F8FB] grid grid-cols-2 gap-4 p-6">
+        <footer className="bg-[#F8F8FB] grid grid-cols-2 grid-rows-auto gap-4 p-6">
             <div className="col-span-2 ">
                 <Image alt="logo" src={logo} className=" mb-4" />
                 <p className="text-[#6f6f6f]">
@@ -16,9 +16,9 @@ export default function Footer() {
                     in some form, by injected humour, or randomised words.
                 </p>
             </div>
-            <address className="bg-white p-6 shadow-xl rounded-lg col-span-1 flex flex-col gap-4">
+            <address className="bg-white p-6 shadow-xl rounded-sm col-span-1 flex flex-col ">
                 <ul className="space-y-4">
-                    <li className="flex items-start">
+                    <li className="flex">
                         <Image
                             alt="telefon nummer"
                             src={phone}
@@ -36,7 +36,7 @@ export default function Footer() {
                             </a>
                         </div>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex">
                         <Image alt="email" src={email} className="mr-4" />
                         <div>
                             <span className="text-[#6f6f6f] text-sm block">
@@ -50,7 +50,7 @@ export default function Footer() {
                             </a>
                         </div>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex">
                         <Image alt="lokation" src={location} className="mr-4" />
                         <div>
                             <span className="text-[#6f6f6f] text-sm block">
