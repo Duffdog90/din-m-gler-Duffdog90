@@ -18,3 +18,26 @@
     background-size: cover;
     height: 53rem;
 }
+
+@media screen and (min-height: 500px) {
+    .media-landing {
+        width: 70%;
+    }
+    .media-search {
+        width: 85%;
+    }
+    .media-h2 {
+        font-size: 2.4rem;
+    }
+}
+@media screen and (min-height: 900px) {
+    .media-landing {
+        width: 60%;
+    }
+    .media-search {
+        width: 86%;
+    }
+    .media-h2 {
+        font-size: 2.5rem;
+    }
+}

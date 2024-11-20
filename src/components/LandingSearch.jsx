@@ -1,6 +1,6 @@
 export default function LandingSearch() {
     return (
-        <div className="filter h-[44.5rem] flex flex-col justify-center items-center">
+        <div className="filter h-[44.5rem] flex flex-col justify-center items-center text-[#162A41]">
             <h1 className="text-white text-[3rem] font-semibold text-outline mb-10">
                 Søg efter din drømmebolig
             </h1>
@@ -16,7 +16,7 @@ export default function LandingSearch() {
                         Hvad skal din næste bolig indeholde?
                         <div className="w-full">
                             <input
-                                className="border-[#F3F1F1] border-2 w-[86%] h-12 pl-2 mt-2"
+                                className=" media-search border-[#F3F1F1] border-2 w-[86%] h-12 pl-2 mt-2"
                                 type="text"
                                 placeholder="Søg på fx. glaskeramisk komfur, bryggers, kælder eller lignende"
                             />
