@@ -20,7 +20,7 @@ export default function LandingSearch() {
                                 type="text"
                                 placeholder="Søg på fx. glaskeramisk komfur, bryggers, kælder eller lignende"
                             />
-                            <button className="bg-[#162A41] text-white h-[85%] w-[13%] ml-2">
+                            <button className="bg-[#162A41] text-white h-[2.9rem] w-[13%] ml-2">
                                 Søg
                             </button>
                         </div>

@@ -9,11 +9,11 @@ import tilmeld from "../../public/images/landingintro-tilmeld.png";
 export default function LandingIntro() {
     return (
         <div className="flex justify-center items-center mt-[7rem] text-[#162A41]">
-            <div className=" media-landing flex justify-center items-center flex-col w-[60%]">
+            <div className=" media-landing flex justify-center items-center flex-col">
                 <section className="flex w-[full] justify-center mb-16">
                     <Image alt="picture of family" src={landingImg} />
-                    <div className="px-[4.5rem] text-[1.1rem]">
-                        <h2 className="media-h2 font-bold text-[2.5rem] mb-4">
+                    <div className="px-[4rem] text-[1.1rem]">
+                        <h2 className="media-h2 font-bold text-[2rem] mb-4">
                             Vi har fulgt danskerne hjem i snart 4 årtier
                             <span className=" block font-semibold text-[1.3rem] mt-8">
                                 Det synes vi siger noget om os!

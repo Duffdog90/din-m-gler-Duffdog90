@@ -1,3 +1,4 @@
+import LandingProperties from "./LandingProperties";
 import LandingSearch from "./LandingSearch";
 import LandingIntro from "./LandinIntro";
 
@@ -6,6 +7,7 @@ export default function LandingPage() {
         <main>
             <LandingSearch />
             <LandingIntro />
+            <LandingProperties />
         </main>
     );
 }
