@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-
         //gav op på at overlap med grid... xD videre i teksten!
 
         <footer className="bg-[#F8F8FB] flex flex-col pt-[5rem] relative h-[45rem] mb-16">
@@ -41,7 +40,11 @@ export default function Footer() {
                             </div>
                         </li>
                         <li className="flex ">
-                            <Image alt="email" src={email} className="mr-4 mb-6" />
+                            <Image
+                                alt="email"
+                                src={email}
+                                className="mr-4 mb-6"
+                            />
                             <div>
                                 <span className="text-[#6f6f6f] text-sm block">
                                     Send en mail
@@ -55,7 +58,11 @@ export default function Footer() {
                             </div>
                         </li>
                         <li className="flex">
-                            <Image alt="lokation" src={location} className="mr-4" />
+                            <Image
+                                alt="lokation"
+                                src={location}
+                                className="mr-4"
+                            />
                             <div>
                                 <span className="text-[#6f6f6f] text-sm block">
                                     Butik
@@ -78,7 +85,10 @@ export default function Footer() {
                     <h2 className="font-semibold text-2xl mb-4">Quick Links</h2>
                     <ul className="space-y-2 text-lg">
                         <li>
-                            <Link href="" className="hover:text-orange-400">
+                            <Link
+                                href="properties"
+                                className="hover:text-orange-400"
+                            >
                                 Boliger til salg
                             </Link>
                         </li>
@@ -100,10 +110,12 @@ export default function Footer() {
                     </ul>
                 </nav>
             </div>
-            <div className="col-span-2 bg-white py-4 w-full pl-[18rem] h-[12rem] flex items-center justify-center absolute bottom-0 z-[1]">
+            <div className="col-span-2 bg-white py-4 w-full pl-[18rem] h-[12rem] flex items-center justify-center absolute bottom-0 z-[1] DMS">
                 <div className="flex flex-col ">
                     <span className="text-[#7B7B7B] text-sm">Medlem af</span>
-                    <span className="font-bold text-[2.5rem] text-[#7B7B7B]">DMS</span>
+                    <span className="font-bold text-[2.5rem] text-[#7B7B7B]">
+                        DMS
+                    </span>
                     <span className="text-[#7B7B7B] text-md">
                         Dansk Mægler Sammenslutning
                     </span>

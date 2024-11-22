@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="">
+        <header className="sticky top-0 z-[9999]">
             <div className="text-white h-[3.8rem] text-[1.2rem] font-semibold flex justify-around items-center bg-[#162A41]">
                 <address className="flex ">
                     <div className="flex">
@@ -57,9 +57,12 @@ export default function Header() {
                     <Image width={320} alt="logo" src={logo} />
                 </Link>
                 <nav className="text-[1.2rem]">
-                    <a className="mr-8 hover:text-orange-400" href="">
+                    <Link
+                        className="mr-8 hover:text-orange-400"
+                        href="properties"
+                    >
                         Boliger til salg
-                    </a>
+                    </Link>
                     <a className="mr-8 hover:text-orange-400" href="">
                         Mæglere
                     </a>

@@ -16,11 +16,11 @@ export default function LandingSearch() {
                         Hvad skal din næste bolig indeholde?
                         <div className="w-full">
                             <input
-                                className=" media-search border-[#F3F1F1] border-2 w-[86%] h-12 pl-2 mt-2"
+                                className=" media-search border-[#F3F1F1] border-2 w-[86%] h-12 pl-2 mt-2 "
                                 type="text"
                                 placeholder="Søg på fx. glaskeramisk komfur, bryggers, kælder eller lignende"
                             />
-                            <button className="bg-[#162A41] text-white h-[2.9rem] w-[13%] ml-2">
+                            <button className="bg-[#162A41] text-white h-[2.9rem] w-[13%] ml-2 rounded-sm hover">
                                 Søg
                             </button>
                         </div>

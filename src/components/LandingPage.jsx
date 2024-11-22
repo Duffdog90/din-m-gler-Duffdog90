@@ -1,6 +1,7 @@
 import LandingProperties from "./LandingProperties";
+import LandingIntro from "./LandingIntro";
 import LandingSearch from "./LandingSearch";
-import LandingIntro from "./LandinIntro";
+import Subscribe from "./LandingSubscribe";
 
 export default function LandingPage() {
     return (
@@ -8,6 +9,7 @@ export default function LandingPage() {
             <LandingSearch />
             <LandingIntro />
             <LandingProperties />
+            <Subscribe />
         </main>
     );
 }
