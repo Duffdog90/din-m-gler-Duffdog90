@@ -93,7 +93,10 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="" className="hover:text-orange-400">
+                            <Link
+                                href="agents"
+                                className="hover:text-orange-400"
+                            >
                                 Mæglere
                             </Link>
                         </li>
@@ -103,7 +106,10 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="" className="hover:text-orange-400">
+                            <Link
+                                href="Login"
+                                className="hover:text-orange-400"
+                            >
                                 Log ind / bliv bruger
                             </Link>
                         </li>

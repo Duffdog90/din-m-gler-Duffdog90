@@ -1,11 +1,16 @@
+"use client";
+
 import paperPlane from "../../public/images/paper-plane.svg";
 import phone from "../../public/images/call.svg";
 import user from "../../public/images/user.svg";
 import logo from "../../public/images/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+    const path = usePathname();
+
     return (
         <header className="sticky top-0 z-[9999]">
             <div className="text-white h-[3.8rem] text-[1.2rem] font-semibold flex justify-around items-center bg-[#162A41]">
@@ -49,7 +54,14 @@ export default function Header() {
                         className="mr-2"
                         src={user}
                     />
-                    <button className="hover:text-orange-400">Log in</button>
+                    <Link
+                        href="Login"
+                        className={`${
+                            path === "/Login" ? "text-orange-400" : "black"
+                        }  hover:text-orange-400`}
+                    >
+                        Log in
+                    </Link>
                 </div>
             </div>
             <div className="h-[5.6rem] flex items-center justify-around px-[10rem] bg-white">
@@ -58,18 +70,35 @@ export default function Header() {
                 </Link>
                 <nav className="text-[1.2rem]">
                     <Link
-                        className="mr-8 hover:text-orange-400"
-                        href="properties"
+                        className={`${
+                            path === "/properties" ? "text-orange-400" : "black"
+                        }  hover:text-orange-400 mr-8`}
+                        href="/properties"
                     >
                         Boliger til salg
                     </Link>
-                    <a className="mr-8 hover:text-orange-400" href="">
+                    <Link
+                        className={`${
+                            path === "/agents" ? "text-orange-400" : "black"
+                        }  hover:text-orange-400 mr-8`}
+                        href="agents"
+                    >
                         Mæglere
-                    </a>
-                    <a className="mr-8 hover:text-orange-400" href="">
+                    </Link>
+                    <a
+                        className={`${
+                            path === "/favorites" ? "text-orange-400" : "black"
+                        }  hover:text-orange-400 mr-8`}
+                        href="favorites"
+                    >
                         Mine favoritter
                     </a>
-                    <a className="hover:text-orange-400" href="">
+                    <a
+                        className={`${
+                            path === "/contactus" ? "text-orange-400" : "black"
+                        }  hover:text-orange-400 mr-8`}
+                        href="contactus"
+                    >
                         Kontakt os
                     </a>
                 </nav>
