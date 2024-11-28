@@ -25,7 +25,13 @@ export default async function Properties({params}) {
                 <div>pictures</div>
                 <span>Kr. {homes.price}</span>
             </div>
-            
+            <div className="w-full">
+                <div className="w-[33%]">
+                    
+                </div>
+                <div className="w-[33%]"></div>
+                <div className="w-[33%]"></div>
+            </div>
         </main>
     );
 }
