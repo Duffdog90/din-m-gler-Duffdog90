@@ -1,6 +1,5 @@
+import Image from "next/image";
 
-
-import PropertyCard from "@/components/PropertyCard/PropertyCard";
 
 export default async function Properties({params}) {
 
@@ -11,24 +10,22 @@ export default async function Properties({params}) {
             const getProperties = await fetch(`https://dinmaegler.onrender.com/homes/${id}`);
             const homes = await getProperties.json();
 
-            console.log(homes);
+            console.log("property details",homes);
             
         
 
     return (
-        <main className="flex flex-col items-center mb-16 bg-white pb-20">
-            <div className="tilsalgFilter bg-[#F8F8FB] flex items-center justify-center w-full mb-12">
-                <h2 className="text-white text-[4rem] font-bold">
-                    Bolig detaljer
-                </h2>
+        <main className="flex flex-col justify-center items-center">
+            <img className="h-[49rem] object-fit w-full" src={homes.images[0].url} />
+            <div className="border-b-2 border-[#D3DEE8] w-[75rem] flex justify-between">
+                <div className="flex flex-col">
+                    <span>{homes.adress1}</span>
+                    <span>{homes.postalcode} {homes.city}</span>
+                </div>
+                <div>pictures</div>
+                <span>Kr. {homes.price}</span>
             </div>
             
-            <div className="grid grid-cols-2 justify-items-center w-[74rem]">
-                {/* {homes.map((items) => (
-                    <PropertyCard items={items} key={items.id} />
-                ))} */}
-                
-            </div>
         </main>
     );
 }
