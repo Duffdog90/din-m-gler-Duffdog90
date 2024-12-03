@@ -37,7 +37,6 @@ export default function Properties() {
     const option = `homes?type_eq=${selectedValue}`
     const range = `homes?price_gte=0&price_lte=${rangeValue}`
 
-    // console.log("HER!", range);
     
 
     console.log();

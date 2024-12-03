@@ -86,7 +86,7 @@ export default function Footer() {
                     <ul className="space-y-2 text-lg">
                         <li>
                             <Link
-                                href="properties"
+                                href="/properties"
                                 className="hover:text-orange-400"
                             >
                                 Boliger til salg
@@ -94,7 +94,7 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
-                                href="agents"
+                                href="/agents"
                                 className="hover:text-orange-400"
                             >
                                 Mæglere
@@ -107,7 +107,7 @@ export default function Footer() {
                         </li>
                         <li>
                             <Link
-                                href="Login"
+                                href="/Login"
                                 className="hover:text-orange-400"
                             >
                                 Log ind / bliv bruger

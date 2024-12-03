@@ -1,9 +1,15 @@
+"use client"
+
 import "./MaeglerCard.css";
 import emailIcon from "../../../public/images/emailMægler.png";
 import inIcon from "../../../public/images/inMægler.png";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-export default async function MaeglerCard({ items }) {
+export default function MaeglerCard({ items }) {
+
+    const pathname = usePathname()
     return (
         <section className="w-[20rem] shadow-lg flex flex-col mt-6 bg-white text-center pb-2">
             <img
@@ -12,18 +18,18 @@ export default async function MaeglerCard({ items }) {
             />
             <div className="px-6 flex flex-col">
                 <h3 className="font-semibold text-xl mb-2">{items.name}</h3>
-                <a
+                <Link
                     className="hover:text-orange-400"
-                    href={`mailto:${items.email}`}
+                    href={`/agents/${items.id}`}
                 >
                     {items.email}
-                </a>
+                </Link>
                 <div className="flex gap-4 w-full justify-center mt-4 mb-4">
                     <a href="">
                         <Image alt="email icon" src={emailIcon} />
                     </a>
                     <a href="">
-                        <Image alt="email icon" src={inIcon} />
+                        <Image alt="in icon" src={inIcon} />
                     </a>
                 </div>
             </div>

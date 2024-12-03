@@ -81,18 +81,18 @@ export default function Header() {
                         className={`${
                             path === "/agents" ? "text-orange-400" : "black"
                         }  hover:text-orange-400 mr-8`}
-                        href="agents"
+                        href="/agents"
                     >
                         Mæglere
                     </Link>
-                    <a
+                    <Link
                         className={`${
                             path === "/favorites" ? "text-orange-400" : "black"
                         }  hover:text-orange-400 mr-8`}
-                        href="favorites"
+                        href="/favorites"
                     >
                         Mine favoritter
-                    </a>
+                    </Link>
                     <a
                         className={`${
                             path === "/contactus" ? "text-orange-400" : "black"

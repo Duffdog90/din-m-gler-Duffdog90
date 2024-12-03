@@ -33,6 +33,17 @@
     height: 15rem;
 }
 
+/* label input[type="radio"] {
+    display: none
+}
+
+input[type="radio"]:checked + img {
+    border-bottom: 0.3rem;
+    border-color: orangered;
+    opacity: 70;
+    transform: scale(1.1);
+} */
+
 @media screen and (min-height: 500px) {
     .media-landing {
         width: 70%;

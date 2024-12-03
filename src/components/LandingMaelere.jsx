@@ -25,7 +25,7 @@ export default async function LandingMaeler() {
                 ))}
             </div>
             <Link
-                href="agents"
+                href="/agents"
                 className="bg-[#162A41] text-white h-[3.5rem] w-[10rem] mt-14 text-lg hover:text-orange-400 flex justify-center items-center"
             >
                 Se alle mæglere

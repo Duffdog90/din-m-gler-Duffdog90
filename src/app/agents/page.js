@@ -1,6 +1,5 @@
 import MaeglerCard from "@/components/MeaglerCard/MaeglerCard";
-import PropertyCard from "@/components/PropertyCard/PropertyCard";
-import Link from "next/link";
+
 
 export default async function Agents() {
     const getAgents = await fetch(`https://dinmaegler.onrender.com/agents`);
