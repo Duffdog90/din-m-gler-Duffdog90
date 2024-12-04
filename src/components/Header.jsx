@@ -7,9 +7,20 @@ import logo from "../../public/images/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { deleteCookie, getCookie } from "cookies-next";
+
 
 export default function Header() {
     const path = usePathname();
+
+    const isLoggedIn = getCookie("dm_userid")
+    
+    function handleLogOut(){
+        if (isLoggedIn) {
+            deleteCookie("dm_token")
+            deleteCookie("dm_userid")
+        }
+    }
 
     return (
         <header className="sticky top-0 z-[9999]">
@@ -55,12 +66,13 @@ export default function Header() {
                         src={user}
                     />
                     <Link
-                        href="Login"
+                        href="/Login"
                         className={`${
                             path === "/Login" ? "text-orange-400" : "black"
                         }  hover:text-orange-400`}
                     >
-                        Log in
+                        <button onClick={handleLogOut}>{isLoggedIn ? "Log ud" : "Log ind"}</button>
+                        
                     </Link>
                 </div>
             </div>
@@ -95,9 +107,9 @@ export default function Header() {
                     </Link>
                     <a
                         className={`${
-                            path === "/contactus" ? "text-orange-400" : "black"
+                            path === "/contact" ? "text-orange-400" : "black"
                         }  hover:text-orange-400 mr-8`}
-                        href="contactus"
+                        href="/contact"
                     >
                         Kontakt os
                     </a>

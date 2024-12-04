@@ -25,11 +25,11 @@ export default async function AgentsDetailsPage({ params }) {
                     Kontakt en medarbejder
                 </h2>
             </div>
-            <section className="flex justify-center p-[2em] mt-[2em] px-[23rem]">
-                <div className="mr-[2em] border-neutral-200 border-2 p-[2em]">
-                    <div className="flex p-2" >
+            <section className="flex justify-center p-[2em] mt-[2em] ">
+                <div className="mr-[2em] border-neutral-200 border-2 p-[2em] w-[50%]">
+                    <div className="flex p-2 " >
                             <img className="w-[16rem] h-[18rem] object-cover mr-2" src={agentDetails.image.url}/>
-                        <div className="flex flex-col p-4 gap-4">
+                        <div className="flex flex-col p-4 gap-4 ">
                                 <span className = "text-2xl font-semibold">{agentDetails.name}</span>
                             <span className="text-[#7B7B7B]">{agentDetails.title}</span>
                             <div className="border-b-[0.18rem] border-[#D3DEE8] w-16"></div>
@@ -56,12 +56,16 @@ export default async function AgentsDetailsPage({ params }) {
                         {agentDetails.description}
                         </p>
                     </div>
-                    <AgentContactForm agent={agentDetails} />
+                    <section className="p-[2em] border-solid border-neutral-200 border-2">
+                        <h2 className="font-semibold text-2xl">Kontakt {agentDetails.name}</h2>
+                        <div className="h-[.2em] w-[3.5em] bg-black mt-[.4em] mb-[3rem]"></div>
+                        <AgentContactForm  />
+                    </section>
                 </div>
                 <div>
                     <div className="bg-[#EEF7FF] p-[2em] relative">
                         <h3 className=" text-2xl border-b-2 mb-[1em] pb-[1em] w-[12em] font-semibold">Search Property</h3>
-                        <Image className="absolute bottom-[2.7rem] left-10" src={searchIcon} />
+                        <Image alt="search" className="absolute bottom-[2.7rem] left-10" src={searchIcon} />
                         <input type="text"
                             placeholder="Search"
                             name="search"

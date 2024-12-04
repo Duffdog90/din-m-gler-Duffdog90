@@ -1,12 +1,20 @@
-"use client";
+"use client"
+
+import login from "@/actions/login"
+import { redirect } from "next/navigation"
+import { useActionState, useEffect } from "react"
 
 export default function Login() {
-    // function handleSubmit(formData) {
-    //     const emailData = formData.get("emailData");
-    //     const passwordData = formData.get("passwordData");
 
-    //     console.log("Form data", emailData, passwordData);
-    // }
+    const [formState, formAction] = useActionState(login, null)
+
+	useEffect(function() {
+		if (!formState) return
+
+		if (formState?.success !== true ) return
+
+		redirect("/")
+	}, [formState])
 
     return (
         <main className="flex flex-col items-center mb-16 bg-white pb-20">
@@ -17,7 +25,7 @@ export default function Login() {
             </div>
             <div className="border w-[45rem] h-[35rem] flex flex-col items-center justify-center mt-20">
                 <form
-                    // onSubmit={handleSubmit}
+                    action={formAction}
                     className="flex flex-col w-[30rem]"
                 >
                     <h3 className="font-semibold text-[1.5rem] mb-4 w-full text-center">
@@ -25,8 +33,9 @@ export default function Login() {
                     </h3>
                     <label className="flex flex-col">
                         Email
+                        <span className="text-red-500 font-bold">{formState?.identifier?._errors.map(error => error)}</span>
                         <input
-                            name="emailData"
+                            name="identifier"
                             className=" border-[#F3F1F1] border-2 h-12 pl-2 mt-2 w-full mb-4"
                             placeholder="Email"
                             type="email"
@@ -34,8 +43,9 @@ export default function Login() {
                     </label>
                     <label className="flex flex-col">
                         Password
+                        <span className="text-red-500 font-bold">{formState?.password?._errors.map(error => error)}</span>
                         <input
-                            name="passwordData"
+                            name="password"
                             className="border-[#F3F1F1] border-2 h-12 pl-2 mt-2 mb-4"
                             placeholder="Password"
                             type="password"

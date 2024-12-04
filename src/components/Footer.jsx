@@ -1,11 +1,24 @@
+"use client"
+
 import Image from "next/image";
 import logo from "../../public/images/logo.svg";
 import phone from "../../public/images/footer-phone.png";
 import email from "../../public/images/footer-email.png";
 import location from "../../public/images/footer-location.png";
 import Link from "next/link";
+import { deleteCookie, getCookie } from "cookies-next";
 
 export default function Footer() {
+
+    const isLoggedIn = getCookie("dm_userid")
+    
+    function handleLogOut(){
+        if (isLoggedIn) {
+            deleteCookie("dm_token")
+            deleteCookie("dm_userid")
+        }
+    }
+
     return (
         //gav op på at overlap med grid... xD videre i teksten!
 
@@ -101,7 +114,7 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="" className="hover:text-orange-400">
+                            <Link href="/contact" className="hover:text-orange-400">
                                 Kontakt os
                             </Link>
                         </li>
@@ -109,8 +122,10 @@ export default function Footer() {
                             <Link
                                 href="/Login"
                                 className="hover:text-orange-400"
-                            >
-                                Log ind / bliv bruger
+                                >
+                                <button onClick={handleLogOut}>
+                                    {isLoggedIn ? "Log ud" : "Log ind / bliv bruger"}
+                                </button>
                             </Link>
                         </li>
                     </ul>
