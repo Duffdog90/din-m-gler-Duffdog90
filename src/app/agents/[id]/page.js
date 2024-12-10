@@ -63,14 +63,14 @@ export default async function AgentsDetailsPage({ params }) {
                     </section>
                 </div>
                 <div>
-                    <div className="bg-[#EEF7FF] p-[2em] relative">
+                    <form action="/search" method="GET" className="bg-[#EEF7FF] p-[2em] relative">
                         <h3 className=" text-2xl border-b-2 mb-[1em] pb-[1em] w-[12em] font-semibold">Search Property</h3>
                         <Image alt="search" className="absolute bottom-[2.7rem] left-10" src={searchIcon} />
-                        <input type="text"
+                        <input type="search"
+                            name="results"
                             placeholder="Search"
-                            name="search"
                             className="placeholder:text-slate-400 block bg-white w-[100%] border border-slate-300 rounded-[.2em] py-2 pl-8 pr-3 shadow-sm focus:outline-none focus:border-orange-500 focus:ring-orange-500 focus:ring-1 " />
-                    </div>
+                    </form>
                     <div className="text-center bg-[#162A41] text-white flex flex-col justify-center items-center text-[2rem] mt-[1em] h-[26rem]">
                         <h2 className="font-semibold ">Find The Best <br /> Property <br /> For Rent Or Buy</h2>
                         <div className="h-[.12em] w-[2.5em] bg-gray-300 mt-[.4em]"></div>

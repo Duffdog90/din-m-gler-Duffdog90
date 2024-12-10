@@ -7,24 +7,53 @@ import phone from "../../../../public/images/call black.png";
 import gallery from "../../../../public/images/gallery.png";
 import layer from "../../../../public/images/layer.png";
 import location from "../../../../public/images/location details.png";
-import wishlist from "../../../../public/images/wishlist details.svg";
+import wishlistWhite from "../../../../public/images/wishlist details.svg";
+import wishlistBlack from "../../../../public/images/wishlist details black.svg";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { getCookie } from "cookies-next";
+import put from "@/actions/put";
 
-export default function Properties() {
+export default function Property() {
 
 
     const pathID = usePathname().replace("/properties/" , "")
 
     console.log("pathID",pathID);
     
-    
+    const token = getCookie("dm_token")
     const [homes, setHomes] = useState()
     const [image, setImage] = useState(homes && homes.images[0].url)
     const [imageFit, setImageFit] = useState(false)
     const [locationShow, setLocationShow] = useState(false)
+    const [favorites, setFavorites] = useState([])
 
+    useEffect(()=>{
+        async function fetchFavorites(){
 
+            const getFavorites = await fetch("https://dinmaegler.onrender.com/users/me", {
+                "method": "GET",
+                "headers": {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            const floofenbergVonLichtenstein = await getFavorites.json();
+            setFavorites(floofenbergVonLichtenstein.homes)
+            console.log("favorites",floofenbergVonLichtenstein.homes);
+        }
+        fetchFavorites()
+    },[])
+
+    const [wishList, setWishList] = useState(false)
+        function handleWishList (){
+            setWishList(prevState => !prevState)
+            put(homes.id)
+        }
+    useEffect(()=>{
+        console.log("homes", homes)
+        
+        setWishList(favorites.includes(homes?.id))
+    },[favorites])
     
     const images = {
         propertyImg: homes && homes.floorplan.url,
@@ -73,7 +102,9 @@ export default function Properties() {
                     <button  onClick={handleShowLocation} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
                         <Image alt="logo" className="hover:scale-105 transition cursor-pointer" src={location}/>
                     </button>
-                    <Image alt="logo" className="hover:scale-105 transition cursor-pointer pb-1" src={wishlist}/>
+                    <button onClick={handleWishList}>
+                        <Image alt="wishList"  src={wishList ? wishlistBlack : wishlistWhite} />
+                    </button>
                 </div>
                 <span className="text-[2rem] font-semibold">Kr. {homes && homes.price.toLocaleString()}</span>
             </div>

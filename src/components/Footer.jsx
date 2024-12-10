@@ -7,15 +7,26 @@ import email from "../../public/images/footer-email.png";
 import location from "../../public/images/footer-location.png";
 import Link from "next/link";
 import { deleteCookie, getCookie } from "cookies-next";
+import { redirect } from "next/dist/server/api-utils";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
 
 export default function Footer() {
 
-    const isLoggedIn = getCookie("dm_userid")
+    const path = usePathname();
+
+    const [isLoggedIn, setIsLoggedIn] = useState()
+    useEffect(()=>{
+        const loggedIn = getCookie("dm_userid")
+        setIsLoggedIn(loggedIn)
+    },[path])
     
     function handleLogOut(){
         if (isLoggedIn) {
             deleteCookie("dm_token")
             deleteCookie("dm_userid")
+            redirect("/Login")
         }
     }
 
@@ -119,14 +130,13 @@ export default function Footer() {
                             </Link>
                         </li>
                         <li>
-                            <Link
+                            {isLoggedIn ? <button onClick={handleLogOut}>Log ud</button> 
+                            : <Link
                                 href="/Login"
                                 className="hover:text-orange-400"
-                                >
-                                <button onClick={handleLogOut}>
-                                    {isLoggedIn ? "Log ud" : "Log ind / bliv bruger"}
-                                </button>
-                            </Link>
+                            >
+                                Log ind / Bliv bruger
+                            </Link>}
                         </li>
                     </ul>
                 </nav>

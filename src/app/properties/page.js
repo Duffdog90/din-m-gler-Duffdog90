@@ -1,15 +1,19 @@
 "use client"
 
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 
 export default function Properties() {
 
     const maxValue = 12000000
     
-    const [homes, setHomes] = useState()
+    const [homes, setHomes] = useState([])
+    const [favorites, setFavorites] = useState({})
     const [selectedValue, setSelectedValue] = useState("all")
     const [rangeValue, setRangeValue] = useState(maxValue)
+    const token = getCookie("dm_token")
+
 
 
     function handleRangeValue(event){
@@ -27,6 +31,23 @@ export default function Properties() {
         fetchHomes()
     },[selectedValue])
 
+    useEffect(()=>{
+        async function fetchFavorites(){
+
+            const getFavorites = await fetch("https://dinmaegler.onrender.com/users/me", {
+                "method": "GET",
+                "headers": {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            const floofenbergVonLichtenstein = await getFavorites.json();
+            setFavorites(floofenbergVonLichtenstein)
+            console.log("favorites",floofenbergVonLichtenstein);
+        }
+        fetchFavorites()
+    },[])
+
+
     function handleOptions(event){
         setSelectedValue(event.target.value)
         setRangeValue(maxValue)
@@ -36,10 +57,6 @@ export default function Properties() {
     
     const option = `homes?type_eq=${selectedValue}`
     const range = `homes?price_gte=0&price_lte=${rangeValue}`
-
-    
-
-    console.log();
     
 
     return (
@@ -84,7 +101,7 @@ export default function Properties() {
             </section>
             <div className="grid grid-cols-2 justify-items-center w-[74rem]">
                 {homes && homes.map((items) => (
-                        <PropertyCard items={items} key={items.id} />
+                        <PropertyCard items={items} key={items.id} fav={favorites?.homes} />
                 ))}
             </div>
         </main>

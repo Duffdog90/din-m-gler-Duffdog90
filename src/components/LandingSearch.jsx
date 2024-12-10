@@ -11,13 +11,14 @@ export default function LandingSearch() {
                     </span>{" "}
                     blandt 158 boliger til salg i 74 butikker
                 </p>
-                <form>
+                <form action="/search" method="GET">
                     <label className="flex flex-col">
                         Hvad skal din næste bolig indeholde?
-                        <div className="w-full">
+                        <div  className="w-full">
                             <input
+                                name="results"
                                 className=" media-search border-[#F3F1F1] border-2 w-[86%] h-12 pl-2 mt-2 "
-                                type="text"
+                                type="search"
                                 placeholder="Søg på fx. glaskeramisk komfur, bryggers, kælder eller lignende"
                             />
                             <button className="bg-[#162A41] text-white h-[2.9rem] w-[13%] ml-2 rounded-sm hover">

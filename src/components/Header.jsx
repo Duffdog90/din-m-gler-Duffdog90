@@ -6,19 +6,26 @@ import user from "../../public/images/user.svg";
 import logo from "../../public/images/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { deleteCookie, getCookie } from "cookies-next";
+import { useEffect, useState } from "react";
 
 
 export default function Header() {
     const path = usePathname();
+    
+    const [isLoggedIn, setIsLoggedIn] = useState()
+    useEffect(()=>{
+        const loggedIn = getCookie("dm_userid")
+        setIsLoggedIn(loggedIn)
+    },[path])
 
-    const isLoggedIn = getCookie("dm_userid")
     
     function handleLogOut(){
         if (isLoggedIn) {
             deleteCookie("dm_token")
             deleteCookie("dm_userid")
+            redirect("/Login")
         }
     }
 
@@ -65,15 +72,18 @@ export default function Header() {
                         className="mr-2"
                         src={user}
                     />
-                    <Link
+                    {isLoggedIn ? <button onClick={handleLogOut}>Log ud</button> 
+                    : <Link
                         href="/Login"
                         className={`${
                             path === "/Login" ? "text-orange-400" : "black"
                         }  hover:text-orange-400`}
                     >
-                        <button onClick={handleLogOut}>{isLoggedIn ? "Log ud" : "Log ind"}</button>
+                        Log ind
+                    </Link>}
                         
-                    </Link>
+                        
+                        
                 </div>
             </div>
             <div className="h-[5.6rem] flex items-center justify-around px-[10rem] bg-white">
@@ -101,18 +111,18 @@ export default function Header() {
                         className={`${
                             path === "/favorites" ? "text-orange-400" : "black"
                         }  hover:text-orange-400 mr-8`}
-                        href="/favorites"
+                        href={isLoggedIn ? "/favorites" : "/Login"}
                     >
                         Mine favoritter
                     </Link>
-                    <a
+                    <Link
                         className={`${
                             path === "/contact" ? "text-orange-400" : "black"
                         }  hover:text-orange-400 mr-8`}
                         href="/contact"
                     >
                         Kontakt os
-                    </a>
+                    </Link>
                 </nav>
             </div>
         </header>
