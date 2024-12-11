@@ -62,7 +62,7 @@ useEffect(()=>{
                                 </span>
                             </div>
                             <span className="font-semibold text-2xl">
-                                Kr. {items.price}
+                                Kr. {items.price.toLocaleString()}
                             </span>
                         </div>
                     </div>
