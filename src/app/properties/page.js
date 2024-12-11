@@ -17,7 +17,6 @@ export default function Properties() {
     const token = getCookie("dm_token")
     
     
-    //https://dinmaegler.onrender.com/homes?price_gte=0&price_lte=5
     function handleRangeValue(event){
         setRangeValue(event.target.value)
     } 
