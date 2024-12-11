@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getCookie } from "cookies-next";
 import put from "@/actions/put";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css"
 
 export default function Property() {
 
@@ -27,6 +29,8 @@ export default function Property() {
     const [imageFit, setImageFit] = useState(false)
     const [locationShow, setLocationShow] = useState(false)
     const [favorites, setFavorites] = useState([])
+    const [open, setOpen] = useState(false)
+    const [openFloorplan, setOpenFloorplan] = useState(false)
 
     useEffect(()=>{
         async function fetchFavorites(){
@@ -51,8 +55,10 @@ export default function Property() {
         }
     useEffect(()=>{
         console.log("homes", homes)
+        if (!token) {
+            return
+        }else setWishList(favorites.includes(homes?.id))
         
-        setWishList(favorites.includes(homes?.id))
     },[favorites])
     
     const images = {
@@ -93,18 +99,36 @@ export default function Property() {
                     <span className="text-xl font-semibold">{homes && homes.postalcode} {homes && homes.city}</span>
                 </address>
                 <div className="flex gap-10">
-                    <button onClick={() =>handleSwitchImage("mainImg", false)} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
+
+
+                    <button onClick={() =>setOpen(true)} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
                         <Image  alt="logo" className="hover:scale-105 transition cursor-pointer " src={gallery}/>
                     </button>
-                    <button onClick={() =>handleSwitchImage("propertyImg", true)} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
+
+
+                    <Lightbox
+                        open={open}
+                        close={() => setOpen(false)}
+                        slides={homes?.images.map(image => ({src: image.url}))}
+                        />
+
+                    <Lightbox
+                        open={openFloorplan}
+                        close={() => setOpenFloorplan(false)}
+                        slides={[{src: homes?.floorplan.url}]}
+                        />
+
+
+                    
+                    <button onClick={() =>setOpenFloorplan(true)} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
                         <Image  alt="logo" className="hover:scale-105 transition cursor-pointer" src={layer}/>
                     </button>
                     <button  onClick={handleShowLocation} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
                         <Image alt="logo" className="hover:scale-105 transition cursor-pointer" src={location}/>
                     </button>
-                    <button onClick={handleWishList}>
+                    {token ? <button onClick={handleWishList}>
                         <Image alt="wishList"  src={wishList ? wishlistBlack : wishlistWhite} />
-                    </button>
+                    </button> : <Link href="/Login"><Image alt="wishlist icon" src={wishlistWhite}/> </Link>}
                 </div>
                 <span className="text-[2rem] font-semibold">Kr. {homes && homes.price.toLocaleString()}</span>
             </div>
@@ -176,7 +200,7 @@ export default function Property() {
                 <section className="w-[40%]">
                     <h3 className="text-2xl font-semibold mb-8">Ansvarlig mægler</h3>
                     <div className="flex border p-8" >
-                        <Link href={`/agent/${homes && homes.agent.id}`}>
+                        <Link href={`/agents/${homes && homes.agent.id}`}>
                             <img className="w-[16rem] h-[18rem] object-cover mr-2" src={homes && homes.agent.image.url}/>
                         </Link>
                         <div className="flex flex-col p-4 gap-4">

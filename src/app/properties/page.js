@@ -3,6 +3,7 @@
 import PropertyCard from "@/components/PropertyCard/PropertyCard";
 import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
+import { useDebounce } from "@/hooks/debounce";
 
 export default function Properties() {
 
@@ -12,24 +13,24 @@ export default function Properties() {
     const [favorites, setFavorites] = useState({})
     const [selectedValue, setSelectedValue] = useState("all")
     const [rangeValue, setRangeValue] = useState(maxValue)
+    const debouncedRangeValue = useDebounce(rangeValue, 2000)
     const token = getCookie("dm_token")
-
-
-
+    
+    
+    //https://dinmaegler.onrender.com/homes?price_gte=0&price_lte=5
     function handleRangeValue(event){
         setRangeValue(event.target.value)
-        setSelectedValue("all")
-    }
+    } 
     useEffect(()=>{
+        const option = `?price_gte=0&price_lte=${debouncedRangeValue}`
         async function fetchHomes(){
-            const getProperties = await fetch(`https://dinmaegler.onrender.com/${selectedValue !== "all" ? option : "homes"}`);
-            // const getProperties = await fetch(`https://dinmaegler.onrender.com/${rangeValue === maxValue ? "homes" : range}`);
+        const getProperties = await fetch(`https://dinmaegler.onrender.com/homes${option}` + (selectedValue === "all" ? "" : `&type_eq=${selectedValue}`));
             const homes = await getProperties.json();
             setHomes(homes)
             console.log("det mig du går og tænker på",homes);
         }
         fetchHomes()
-    },[selectedValue])
+    },[debouncedRangeValue, selectedValue])
 
     useEffect(()=>{
         async function fetchFavorites(){
@@ -40,9 +41,9 @@ export default function Properties() {
                     "Authorization": `Bearer ${token}`
                 }
             })
-            const floofenbergVonLichtenstein = await getFavorites.json();
-            setFavorites(floofenbergVonLichtenstein)
-            console.log("favorites",floofenbergVonLichtenstein);
+            const favResponse = await getFavorites.json();
+            setFavorites(favResponse)
+            console.log("favorites",favResponse);
         }
         fetchFavorites()
     },[])
@@ -50,13 +51,9 @@ export default function Properties() {
 
     function handleOptions(event){
         setSelectedValue(event.target.value)
-        setRangeValue(maxValue)
     }
-
-    // console.log("options select",selectedValue);
     
-    const option = `homes?type_eq=${selectedValue}`
-    const range = `homes?price_gte=0&price_lte=${rangeValue}`
+
     
 
     return (
@@ -88,10 +85,10 @@ export default function Properties() {
 
                         <label className="flex flex-col w-[40rem] ml-4 justify-center pt-4">
                             Pris-interval
-                            <input className="w-full bg-gray-100 my-2 w-full h-[0.15rem] bg-gray-300 appearance-none rounded-full focus:outline-none focus:ring-2 focus:ring-gray-100" onChange={handleRangeValue} value={rangeValue} type="range" min="0" max={"" + maxValue} />
+                            <input className="w-full bg-gray-100 my-2 w-full h-[0.15rem] bg-gray-300 appearance-none rounded-full focus:outline-none focus:ring-2 focus:ring-gray-100" onChange={handleRangeValue} value={rangeValue} type="range" min="0" max={maxValue} />
                             <div className="flex justify-between">
                                 <span>{rangeValue}</span>
-                                <span>12000000</span>
+                                <span>{maxValue}</span>
                             </div>     
                         </label>
                     </div>
@@ -101,7 +98,7 @@ export default function Properties() {
             </section>
             <div className="grid grid-cols-2 justify-items-center w-[74rem]">
                 {homes && homes.map((items) => (
-                        <PropertyCard items={items} key={items.id} fav={favorites?.homes} />
+                        <PropertyCard items={items} key={items.id} fav={favorites?.homes} token={token} />
                 ))}
             </div>
         </main>

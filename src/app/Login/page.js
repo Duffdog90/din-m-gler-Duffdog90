@@ -2,16 +2,17 @@
 
 import login from "@/actions/login"
 import { redirect } from "next/navigation"
-import { useActionState, useEffect } from "react"
+import { useActionState, useEffect, useState } from "react"
 
 export default function Login() {
 
     const [formState, formAction] = useActionState(login, null)
+    const [error, setError] = useState()
 
 	useEffect(function() {
 		if (!formState) return
 
-		if (formState?.success !== true ) return
+		if (formState?.success !== true ) return setError(formState.error)
 
 		redirect("/")
 	}, [formState])
@@ -25,6 +26,7 @@ export default function Login() {
             </div>
             <div className="border w-[45rem] h-[35rem] flex flex-col items-center justify-center mt-20">
                 <form
+                    noValidate
                     action={formAction}
                     className="flex flex-col w-[30rem]"
                 >
@@ -33,6 +35,7 @@ export default function Login() {
                     </h3>
                     <label className="flex flex-col">
                         Email
+                        <span className="text-red-500 font-bold">{error}</span>
                         <span className="text-red-500 font-bold">{formState?.identifier?._errors.map(error => error)}</span>
                         <input
                             name="identifier"

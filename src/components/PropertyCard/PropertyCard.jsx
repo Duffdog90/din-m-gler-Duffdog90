@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import put from "@/actions/put";
 
-export default function PropertyCard({ items, fav }) {
+export default function PropertyCard({ items, fav, token }) {
 
     const [wishList, setWishList] = useState(false)
     function handleWishList (){
@@ -27,9 +27,9 @@ useEffect(()=>{
         <>
             {pathName === "/properties" ? <section className="w-[35rem] shadow-lg flex flex-col mt-6 bg-white relative">
                 <div className="bg-white/85 h-10 w-10 rounded-full absolute right-4 top-4 flex justify-center items-center">
-                <button onClick={handleWishList}>
+                {token ? <button onClick={handleWishList}>
                     <Image alt="wishList"  src={wishList ? heartBlack : heartWhite} />
-                </button>
+                </button> : <Link href="/Login"><Image alt="wishlist icon" src={heartWhite}/></Link>}
                 </div>
                 <Link href={`/properties/${items.id}`} className="w-full">
                     <img className="h-[17rem] mb-4 w-full" src={items.images[0].url} />
@@ -74,7 +74,7 @@ useEffect(()=>{
                                 <address className="flex flex-col gap-4">
                                     <span className="font-semibold text-xl">
                                         {items.adress1}
-                                        {items.adress2 ? " • " : ""}S
+                                        {items.adress2 ? " • " : ""}
                                         {items.adress2 ? items.adress2 : null}
                                     </span>
                                     <span className="text-lg">

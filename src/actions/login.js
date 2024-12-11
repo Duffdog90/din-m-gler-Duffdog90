@@ -25,6 +25,11 @@ export default async function login(prevState, formData) {
 			password
 		})
 	})
+console.log("HER RESPONSE",response);
+
+	if (response.status === 400){
+		return { success: false, error: "Forkert Password eller Email." }
+	}
 
 	const data = await response.json()
 
