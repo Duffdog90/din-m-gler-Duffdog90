@@ -72,7 +72,9 @@ export default function Header() {
                         className="mr-2"
                         src={user}
                     />
-                    {isLoggedIn ? <button onClick={handleLogOut}>Log ud</button> 
+                    {isLoggedIn ? <button className={`${
+                            path === "/Login" ? "text-orange-400" : "black"
+                        }  hover:text-orange-400`} onClick={handleLogOut}>Log ud</button> 
                     : <Link
                         href="/Login"
                         className={`${

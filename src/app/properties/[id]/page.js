@@ -126,9 +126,9 @@ export default function Property() {
                     <button  onClick={handleShowLocation} className="focus:border-b-4 focus:scale-105 border-orange-300 pb-1" >
                         <Image alt="logo" className="hover:scale-105 transition cursor-pointer" src={location}/>
                     </button>
-                    {token ? <button onClick={handleWishList}>
+                    {token ? <button onClick={handleWishList} className="hover:scale-105 transition cursor-pointer">
                         <Image alt="wishList"  src={wishList ? wishlistBlack : wishlistWhite} />
-                    </button> : <Link href="/Login"><Image alt="wishlist icon" src={wishlistWhite}/> </Link>}
+                    </button> : <Link className="hover:scale-105 transition cursor-pointer" href="/Login"><Image alt="wishlist icon" src={wishlistWhite}/> </Link>}
                 </div>
                 <span className="text-[2rem] font-semibold">Kr. {homes && homes.price.toLocaleString()}</span>
             </div>
