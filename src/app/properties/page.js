@@ -96,11 +96,13 @@ export default function Properties() {
 
 
             </section>
+            {homes.length === 0 ? 
+            <span className="text-2xl font-semibold">Ingen boliger opfylder disse søge kriterier.</span> : 
             <div className="grid grid-cols-2 justify-items-center w-[74rem]">
                 {homes && homes.map((items) => (
                         <PropertyCard items={items} key={items.id} fav={favorites?.homes} token={token} />
                 ))}
-            </div>
+            </div>}
         </main>
     );
 }
