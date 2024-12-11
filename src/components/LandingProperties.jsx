@@ -1,11 +1,15 @@
 import Link from "next/link";
 import PropertyCard from "./PropertyCard/PropertyCard";
+import { getCookie } from "cookies-next";
+import { cookies } from "next/headers";
 
 export default async function LandingProperties() {
     const getProperties = await fetch(
         `https://dinmaegler.onrender.com/homes?_limit=4`
     );
     const homes = await getProperties.json();
+    const cookieStore = await cookies()
+    const token = cookieStore.get("dm_token")
 
     console.log(homes);
 
@@ -18,7 +22,7 @@ export default async function LandingProperties() {
             </p>
             <div className="grid grid-cols-2 justify-items-center w-[74rem]">
                 {homes.map((items) => (
-                    <PropertyCard items={items} key={items.id} />
+                    <PropertyCard items={items} key={items.id} token={token}/>
                 ))}
             </div>
             <Link
