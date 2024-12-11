@@ -62,6 +62,7 @@ input[type="radio"]:checked + img {
     }
 }
 @media screen and (min-height: 900px) {
+
     .media-landing {
         width: 60%;
     }

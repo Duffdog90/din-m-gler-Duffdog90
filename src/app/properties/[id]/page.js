@@ -176,23 +176,23 @@ export default function Property() {
                 <div className="flex flex-col w-1/4 ">
                     <div className="flex justify-between ">
                         <span>Udbetaling:</span>
-                        <span className="w-[35%]">kr. {homes && homes.payment.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.payment.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Brutto ex ejerudgift:</span>
-                        <span className="w-[35%]">kr. {homes && homes.gross.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.gross.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Netto ex ejerudgift:</span>
-                        <span className="w-[35%]">kr. {homes && homes.netto.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.netto.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Ejerudgifter:</span>
-                        <span className="w-[35%]">kr. {homes && homes.cost.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.cost.toLocaleString()}</span>
                     </div>
                 </div>
             </div>
-            <div className="flex mt-12 text-[#2A2C30] mb-20 justify-center ml-[7.5rem]">
+            <div className="flex mt-12 text-[#2A2C30] mb-20 justify-center w-[103rem]">
                 <article className="w-1/3 pr-[5rem]">
                     <h2 className="text-2xl font-semibold mb-8">Beskrivelse</h2>
                     <p className="text-lg">{homes && homes.description}</p>
