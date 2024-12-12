@@ -52,7 +52,7 @@ function handleRemoveFavorite (){
                                 </span>
                             </div>
                             <span className="font-semibold text-2xl">
-                                Kr. {items.price.toLocaleString()}
+                                Kr. {items.price.toLocaleString('en-US')}
                             </span>
                         </div>
                         <button onClick={handleRemoveFavorite}  className=" hover:text-orange-400 bg-[#162A41] h-[3.5rem] w-[12rem] text-white">Fjern fra favoritter</button>

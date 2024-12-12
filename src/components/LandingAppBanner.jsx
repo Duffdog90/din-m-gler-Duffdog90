@@ -3,6 +3,7 @@ import appleStore from "../../public/images/apple.png";
 import playStore from "../../public/images/play-store.png";
 import phone1 from "../../public/images/AppPhone1.png";
 import phone2 from "../../public/images/AppPhone2.png";
+import phone3 from "../../public/images/phones.png";
 
 export default function LandingAppBanner() {
     return (
@@ -47,13 +48,13 @@ export default function LandingAppBanner() {
                     height={350}
                     className="z-[2]"
                     alt="phone image"
-                    src={phone1}
+                    src={phone3}
                 />
-                <Image
+                {/* <Image
                     className="absolute left-[136] bottom-0 z-[1]"
                     alt="phone image"
                     src={phone2}
-                />
+                /> */}
             </div>
         </section>
     );

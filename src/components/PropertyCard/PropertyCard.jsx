@@ -47,7 +47,7 @@ useEffect(()=>{
                                 <span className="font-semibold text-xl">
                                     {items.type}
                                 </span>{" "}
-                                • Ejerudgift: {items.cost.toLocaleString()}kr
+                                • Ejerudgift: {items.cost.toLocaleString('en-US')}kr
                             </span>
                         </address>
                         <div className="border-t-2 mt-4 flex justify-between py-4">
@@ -62,7 +62,7 @@ useEffect(()=>{
                                 </span>
                             </div>
                             <span className="font-semibold text-2xl">
-                                Kr. {items.price.toLocaleString()}
+                                Kr. {items.price.toLocaleString('en-US')}
                             </span>
                         </div>
                     </div>

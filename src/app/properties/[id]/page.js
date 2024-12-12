@@ -130,7 +130,7 @@ export default function Property() {
                         <Image alt="wishList"  src={wishList ? wishlistBlack : wishlistWhite} />
                     </button> : <Link className="hover:scale-105 transition cursor-pointer" href="/Login"><Image alt="wishlist icon" src={wishlistWhite}/> </Link>}
                 </div>
-                <span className="text-[2rem] font-semibold">Kr. {homes && homes.price.toLocaleString()}</span>
+                <span className="text-[2rem] font-semibold">Kr. {homes && homes.price.toLocaleString('en-US')}</span>
             </div>
             <div className="flex justify-between pt-8 gap-5 w-[75rem] text-lg">
                 <div className="flex flex-col w-1/4">
@@ -176,19 +176,19 @@ export default function Property() {
                 <div className="flex flex-col w-1/4 ">
                     <div className="flex justify-between ">
                         <span>Udbetaling:</span>
-                        <span className="w-[35%]">Kr. {homes && homes.payment.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.payment.toLocaleString('en-US')}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Brutto ex ejerudgift:</span>
-                        <span className="w-[35%]">Kr. {homes && homes.gross.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.gross.toLocaleString('en-US')}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Netto ex ejerudgift:</span>
-                        <span className="w-[35%]">Kr. {homes && homes.netto.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.netto.toLocaleString('en-US')}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>Ejerudgifter:</span>
-                        <span className="w-[35%]">Kr. {homes && homes.cost.toLocaleString()}</span>
+                        <span className="w-[35%]">Kr. {homes && homes.cost.toLocaleString('en-US')}</span>
                     </div>
                 </div>
             </div>
