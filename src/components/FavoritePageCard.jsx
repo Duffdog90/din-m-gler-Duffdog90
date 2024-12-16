@@ -21,7 +21,7 @@ function handleRemoveFavorite (){
         <section ref={myRef}  className=" w-[75rem] shadow-lg flex mt-8 bg-white relative rounded border-[0.1rem] border-[#D5E0EA] p-6 items-center">
                 <div className="flex w-full justify-between ">
                     <div className="flex">
-                        <img className="h-[8rem] w-[15rem] mr-10" src={items.images[0].url} />
+                        <img alt="house image" className="h-[8rem] w-[15rem] mr-10" src={items.images[0].url} />
                         <address className="flex flex-col gap-4">
                             <span className="font-semibold text-lg">
                                 {items.adress1}

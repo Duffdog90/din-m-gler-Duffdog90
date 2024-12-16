@@ -16,6 +16,7 @@ export default function MaeglerCard({ items }) {
                     href={`/agents/${items.id}`}
                 >
                 <img
+                    alt="agent image"
                     className="h-[17rem] mb-4 object-cover"
                     src={items.image.url}
                 />

@@ -28,7 +28,7 @@ export default async function AgentsDetailsPage({ params }) {
             <section className="flex justify-center p-[2em] mt-[2em] ">
                 <div className="mr-[2em] border-neutral-200 border-2 p-[2em] w-[50%]">
                     <div className="flex p-2 " >
-                            <img className="w-[16rem] h-[18rem] object-cover mr-2" src={agentDetails.image.url}/>
+                            <img alt="agent image" className="w-[16rem] h-[18rem] object-cover mr-2" src={agentDetails.image.url}/>
                         <div className="flex flex-col p-4 gap-4 ">
                                 <span className = "text-2xl font-semibold">{agentDetails.name}</span>
                             <span className="text-[#7B7B7B]">{agentDetails.title}</span>
