@@ -32,7 +32,7 @@ useEffect(()=>{
                 </button> : <Link href="/Login"><Image alt="wishlist icon" src={heartWhite}/></Link>}
                 </div>
                 <Link href={`/properties/${items.id}`} className="w-full">
-                    <img className="h-[17rem] mb-4 w-full" src={items.images[0].url} />
+                    <img alt="property image" className="h-[17rem] mb-4 w-full" src={items.images[0].url} />
                     <div className="px-6">
                         <address className="flex flex-col gap-4">
                             <span className="font-semibold text-xl">
