@@ -54,7 +54,7 @@ export default function Properties() {
     }
 
     function loadMore() {
-        setVisibleCount((prevCount) => prevCount + 4);
+        setVisibleCount((prevState) => prevState + 4);
     }
 
     return (
